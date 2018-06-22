@@ -17,7 +17,17 @@ window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(a, name, value)
     $_GET[name] = value;
 });
 
-document.getElementById('name').innerHTML = decodeURI($_GET.name.toUpperCase());
+var icons = document.querySelector('.icons');
+var names = $_GET.name.includes('[') ? JSON.parse(decodeURI(($_GET.name || '').toUpperCase())) : [$_GET.name.toUpperCase()];
+
+names.forEach(name => {
+    let x =  name.replace(/\w/g, function(x) {
+            return "<span>"+x+"</span>"
+        });
+    icons.innerHTML += `<div class="row">${
+        x
+    }</div>`
+});
 
 // confetti settings
 var confetti_colors = ['#E68F17', '#FAB005', '#FA5252', '#E64980', '#BE4BDB', '#0B7285', '#15AABF', '#EE1233', '#40C057'];
@@ -335,7 +345,7 @@ window.onload = function() {
 function reveal() {
     document.querySelector('.merrywrap').style.backgroundColor = 'transparent';
 
-    loop();
+    setTimeout(loop, 5000);
 
     var w, h;
     if (window.innerWidth >= 1000) {
