@@ -21,7 +21,7 @@ var icons = document.querySelector('.icons');
 var names = $_GET.name.includes('[') ? JSON.parse(decodeURI(($_GET.name || '').toUpperCase())) : [$_GET.name.toUpperCase()];
 
 names.forEach(name => {
-    let x =  name.replace(/\w/g, function(x) {
+    let x =  name.replace(/./g, function(x) {
             return "<span>"+x+"</span>"
         });
     icons.innerHTML += `<div class="row">${
