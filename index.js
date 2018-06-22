@@ -345,7 +345,7 @@ window.onload = function() {
 function reveal() {
     document.querySelector('.merrywrap').style.backgroundColor = 'transparent';
 
-    setTimeout(loop, 5000);
+    loop();
 
     var w, h;
     if (window.innerWidth >= 1000) {
