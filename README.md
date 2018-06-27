@@ -3,7 +3,7 @@ untuk kamu yang lagi ultah
 
 ---
 
-cara pakai: https://yahyaanwar.github.io/hbd/?name=isi
+cara pakai: https://yahyaanwar.github.io/hbd/?name=`isi`
 
 ganti `isi` dengan nama orang yang ultah. misal:
 
