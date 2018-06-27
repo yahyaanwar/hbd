@@ -15,7 +15,7 @@ nama yang ulang tahun. contoh:
 
 
 **date** (opsional)
-tanggal ulang tahun. contoh:
+tanggal ulang tahun(format: bulan tanggal tahun jam:menit:detik). contoh:
 `https://yahyaanwar.github.io/hbd/?date=12 22 1999 15:40`
 
 ---
