@@ -4,9 +4,9 @@ untuk kamu yang lagi ultah
 ---
 
 cara pakai: `https://yahyaanwar.github.io/hbd/?params`
-
 ganti `params` dengan parameter
 
+<<<<<<< HEAD
 daftar parameter:
 **name** (opsional)
 nama yang ulang tahun. contoh:
@@ -21,3 +21,4 @@ tanggal ulang tahun. contoh:
 ---
 
 disarankan : `https://yahyaanwar.github.io/hbd/?name=Jhon Doe&date=12 22 1999 15:40`
+
