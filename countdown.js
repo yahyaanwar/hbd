@@ -2,9 +2,9 @@ const second = 1000,
       minute = second * 60,
       hour = minute * 60,
       day = hour * 24,
-      date = $_GET.date || '0';
+      date = new Date(($_GET.date || '0').replace(/%20/g, ' '))
 
-let countDown = new Date(date.replace(/%20/g, ' ')).getTime(),
+let countDown = date != 'Invalid Date' ? date.getTime(): new Date(0).getTime(),
     timer = {},
     x = setInterval(function() {
 
