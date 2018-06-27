@@ -19,7 +19,8 @@ window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(a, name, value)
 
 var ondate = false;
 var icons = document.querySelector('.icons');
-var names = $_GET.name.includes('[') ? JSON.parse(decodeURI(($_GET.name || '').toUpperCase())) : [$_GET.name.toUpperCase()];
+var getName = $_GET.name || '';
+var names = getName.includes('[') ? JSON.parse(decodeURI(getName.toUpperCase())) : [decodeURI(getName.toUpperCase())];
 
 names.forEach(name => {
     let x = name.replace(/./g, function(x) {
@@ -315,10 +316,6 @@ window.onload = function() {
 
     function init() {
         box.addEventListener("click", openBox, false);
-        box.addEventListener("click", () => {
-            window.confetti(point1, confetti_configs1);
-            window.confetti(point2, confetti_configs2);
-        }, false);
     }
 
     function stepClass(step) {
@@ -330,6 +327,9 @@ window.onload = function() {
         if (ondate) {
             if (step === 1) {
                 box.removeEventListener("click", openBox, false);
+                window.confetti(point1, confetti_configs1);
+                window.confetti(point2, confetti_configs2);
+                document.getElementById('countdown').style.display = 'none'
             }
             stepClass(step);
             if (step === 3) {}
@@ -341,7 +341,6 @@ window.onload = function() {
             step++;
         }
     }
-
     init();
 };
 

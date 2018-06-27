@@ -21,6 +21,10 @@ canvas#canvas {
   height: 100%;
 }
 
+div#countdown h1 {
+  text-align: center;
+}
+
 div#beach {
   background-image: url(https://dl.dropbox.com/s/oe0oce2udq44bj5/beachsil2.png);
   /* background-size: cover; */
