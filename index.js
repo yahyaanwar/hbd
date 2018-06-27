@@ -17,13 +17,14 @@ window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(a, name, value)
     $_GET[name] = value;
 });
 
+var ondate = false;
 var icons = document.querySelector('.icons');
 var names = $_GET.name.includes('[') ? JSON.parse(decodeURI(($_GET.name || '').toUpperCase())) : [$_GET.name.toUpperCase()];
 
 names.forEach(name => {
-    let x =  name.replace(/./g, function(x) {
-            return "<span>"+x+"</span>"
-        });
+    let x = name.replace(/./g, function(x) {
+        return "<span>" + x + "</span>"
+    });
     icons.innerHTML += `<div class="row">${
         x
     }</div>`
@@ -326,17 +327,19 @@ window.onload = function() {
     }
 
     function openBox() {
-        if (step === 1) {
-            box.removeEventListener("click", openBox, false);
+        if (ondate) {
+            if (step === 1) {
+                box.removeEventListener("click", openBox, false);
+            }
+            stepClass(step);
+            if (step === 3) {}
+            if (step === 4) {
+                reveal();
+                return;
+            }
+            setTimeout(openBox, stepMinutes[step - 1]);
+            step++;
         }
-        stepClass(step);
-        if (step === 3) {}
-        if (step === 4) {
-            reveal();
-            return;
-        }
-        setTimeout(openBox, stepMinutes[step - 1]);
-        step++;
     }
 
     init();

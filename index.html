@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Birthday Gift</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="normalize.min.css">
 
       <link rel="stylesheet" href="style.css">
 </head>
@@ -23,8 +23,23 @@
 <!--<img src="https://dl.dropbox.com/s/zoftkmdxyyqr8ce/belair.png" alt="jumping-people" id="car" />-->
 
 <div id="merrywrap" class="merrywrap">
+
+  <!-- for confetti -->
   <span id="point1" style="display: block;"></span>
   <span id="point2" style="display: block; float: right;"></span>
+
+  <!-- for countdown -->
+  <h1>
+    days: 
+    <span id="days"></span>
+    hours :
+    <span id="hours"></span>
+    minutes :
+    <span id="minutes"></span>
+    seconds :
+    <span id="seconds"></span>
+  </h1>
+
   <div class="giftbox">
     <div class="cover">
       <div></div>
@@ -62,11 +77,9 @@
 <!-- </div> -->
 
   
-  <script src="countdown.js"></script>
-  
   <script src='confetti.js'></script>
-
-    <script  src="index.js"></script>
+  <script  src="index.js"></script>
+  <script src="countdown.js"></script>
 
 
 

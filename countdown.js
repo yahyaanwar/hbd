@@ -3,7 +3,7 @@ const second = 1000,
       hour = minute * 60,
       day = hour * 24;
 
-let countDown = new Date('Sep 30, 2018 00:00:00').getTime(),
+let countDown = new Date($_GET.date.replace(/%20/g, ' ')).getTime(),
     x = setInterval(function() {
 
       let now = new Date().getTime(),
@@ -15,9 +15,9 @@ let countDown = new Date('Sep 30, 2018 00:00:00').getTime(),
       document.getElementById('seconds').innerText = Math.floor((distance % (minute)) / second);
       
       //do something later when date is reached
-      //if (distance < 0) {
-      //  clearInterval(x);
-      //  'IT'S MY BIRTHDAY!;
-      //}
+      if (distance < 0) {
+       clearInterval(x);
+       ondate = true;
+      }
 
     }, second)
