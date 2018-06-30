@@ -2,9 +2,10 @@ const second = 1000,
     minute = second * 60,
     hour = minute * 60,
     day = hour * 24,
-    date = new Date(($_GET.date || '0').replace(/%20/g, ' '))
+    nextYear = new Date().getFullYear() + 1
 
-let countDown = date != 'Invalid Date' ? date.getTime() : new Date(0).getTime(),
+var date = new Date(($_GET.date || '0').replace(/%20/g, ' '))
+    countDown = date != 'Invalid Date' ? date.getTime() : new Date(0).getTime(),
     timer = {},
     x = setInterval(function() {
 
@@ -19,14 +20,19 @@ let countDown = date != 'Invalid Date' ? date.getTime() : new Date(0).getTime(),
         document.getElementById('timer').innerText = timer.days + timer.hours + timer.minutes + timer.seconds;
 
         //do something later when date is reached
-        if (distance <= 0) {
+        if (distance <= 0 && distance > -(24*60*60*1000)) {
             clearInterval(x);
             ondate = true;
             document.getElementById('countdown').innerHTML = '<h1>Selesai</h1>';
         }
 
-    }, second)
+        if (distance < -(24*60*60*1000)) {
+            ondate = false;
+            countDown = new Date(($_GET.date || '0').replace(/%20/g, ' ').replace(/\b\d{4}\b/, nextYear)).getTime()
+            if ($_GET.yearly != 'true') {
+                clearInterval(x);
+                document.getElementById('countdown').innerHTML = '<h1>terlambat</h1>';
+            }
+        }
 
-if (countDown - new Date().getTime() > 0) {
-    document.getElementById('countdown').style.display = 'block'
-}
+    }, second)
