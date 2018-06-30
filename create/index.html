@@ -12,6 +12,11 @@
 		.is-selected .datepicker-day-button {
 			color: white;
 		}
+		[type="checkbox"]+span:not(.lever):before, [type="checkbox"]:not(.filled-in)+span:not(.lever):after {
+			border-color: yellow;
+		}
+
+		body > div > div.col.s12.m4.l3 > div > div.card-action > form > p > label > span:before
     </style>
 
     <!-- Compiled and minified JavaScript -->
@@ -29,18 +34,32 @@
 							
 							<div class="input-field">
 			          <input type="text" id="name" class="blue-grey yellow-text">
-			          <label for="nama" class="white-text">nama</label>
-			          <p>anibudie a / ["budi ardian", "wijaya"]</p>
+			          <label for="nama" class="white-text">nama panggilan</label>
+			          <p>anie / ["budi", "yahya"]</p>
 			        </div>
 
 			        <div class="input-field">
-			          <input type="text" id="date" class="blue-grey yellow-text datepicker">
-			          <label for="date" class="white-text">tanggal</label>
-			          <p>12 22 2018 15:30 (waktu opsional)</p>
+			          <input type="text" id="date" class="blue-grey yellow-text">
+			          <label for="date" class="white-text">tanggal ultah</label>
+			        </div>
+
+			        <div class="input-field">
+			          <input type="number" id="born" class="blue-grey yellow-text">
+			          <label for="born" class="white-text">tahun lahir</label>
 			        </div>
 
 		        </div>
 		        <div class="card-action">
+							
+							<form action="#">
+						    <p>
+						      <label>
+						        <input type="checkbox" checked="checked" id="yearly"/>
+						        <span class="white-text">valid untuk tahun berikutnya</span>
+						      </label>
+						    </p>
+						  </form>
+
 		        	<p class="white-text blue-grey" id="url"></p>
 		        	<button class="waves-effect waves-light btn yellow blue-grey-text" id="copy" data-clipboard-target = '#url'>salin alamat</button>
 		        </div>
@@ -54,11 +73,13 @@
 		  <script>
 		  	const nameInput = document.querySelector("#name"),
 		  		copyBtn = document.querySelector('#copy'),
-		  		Url = document.querySelector('#url')
+		  		bornAt = document.querySelector('#born')
+		  		Url = document.querySelector('#url'),
+		  		yearlyCheck = document.querySelector('#yearly')
 
-		  	let x = 0, name = '', date = ''
+		  	let x = 0, name = '', date = '', born = ''
 
-		  	Url.innerHTML = "https://yahyaanwar.github.io/hbd/";
+		  	Url.innerHTML = "https://yahyaanwar.github.io/hbd/?yearly=true";
 
 		  	nameInput.addEventListener('keyup', () => {
 		  		clearTimeout(x)
@@ -68,8 +89,18 @@
 		  		}, 1000)
 		  	}, false)
 
+		  	bornAt.addEventListener('keyup', () => {
+		  		clearTimeout(x)
+		  		x = setTimeout(() => {
+		  			born = bornAt.value
+		  			updateURL();
+		  		}, 1000)
+		  	}, false)
+
+		  	yearlyCheck.addEventListener('click', () => {updateURL()}, false)
+
 		  	function updateURL(){
-	  			const link = `https://yahyaanwar.github.io/hbd/?name=${name}&date=${date}`
+	  			const link = `https://yahyaanwar.github.io/hbd/?name=${name}&date=${date}&born=${born}` + (yearlyCheck.checked && "&yearly=true")
 	  			document.querySelector('iframe').src = link;
 	  			Url.innerHTML = link;
 	  			copyBtn.innerHTML = "salin alamat"
@@ -86,7 +117,7 @@
 
 
 			  document.addEventListener('DOMContentLoaded', function() {
-			    var elems = document.querySelectorAll('.datepicker');
+			    var elems = document.querySelectorAll('#date');
 			    var instances = M.Datepicker.init(elems, {
 			    	onClose: () => {
 			    		date = elems[0].value
