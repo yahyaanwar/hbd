@@ -18,29 +18,18 @@ window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(a, name, value)
 });
 
 var ondate = false;
-var nameDOM = document.querySelector('#name');
-var oldDOM = document.querySelector('#old');
+var icons = document.querySelector('.icons');
 var getName = $_GET.name || '';
 var names = getName.includes('[') ? JSON.parse(decodeURI(getName.toUpperCase())) : [decodeURI(getName.toUpperCase())];
-var txtOld = "yang ke- " + ($_GET.date.replace(/%20/g, ' ').match(/\b\d{4}\b/)[0] - $_GET.born)
 
-names.forEach(char => {
-    let x = char.replace(/./g, function(x) {
+names.forEach(name => {
+    let x = name.replace(/./g, function(x) {
         return "<span>" + x + "</span>"
     });
-    nameDOM.innerHTML += x
+    icons.innerHTML += `<div class="row">${
+        x
+    }</div>`
 });
-
-if ($_GET.born) {
-    txtOld.split('').forEach(char => {
-        let x = char.replace(/./g, function(x) {
-            return "<span>" + x + "</span>"
-        });
-        oldDOM.innerHTML += x
-    });
-}
-
-
 
 // confetti settings
 var confetti_colors = ['#E68F17', '#FAB005', '#FA5252', '#E64980', '#BE4BDB', '#0B7285', '#15AABF', '#EE1233', '#40C057'];
