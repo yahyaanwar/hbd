@@ -20,13 +20,13 @@
 		          <h6>Isi nama dan tanggalnya</h6>
 							
 							<div class="input-field">
-			          <input type="text" id="name" class="blue-grey white-text">
+			          <input type="text" id="name" class="blue-grey yellow-text">
 			          <label for="nama" class="white-text">nama</label>
 			          <p>anibudie a / ["budi ardian", "wijaya"]</p>
 			        </div>
 
 			        <div class="input-field">
-			          <input type="text" id="date" class="blue-grey white-text">
+			          <input type="text" id="date" class="blue-grey yellow-text datepicker">
 			          <label for="date" class="white-text">tanggal</label>
 			          <p>12 22 2018 15:30 (waktu opsional)</p>
 			        </div>
@@ -34,7 +34,7 @@
 		        </div>
 		        <div class="card-action">
 		        	<p class="white-text blue-grey" id="url"></p>
-		        	<button class="waves-effect waves-light btn" id="copy" data-clipboard-target = '#url'>salin alamat</button>
+		        	<button class="waves-effect waves-light btn yellow blue-grey-text" id="copy" data-clipboard-target = '#url'>salin alamat</button>
 		        </div>
 		      </div>
 		    </div>
@@ -45,25 +45,17 @@
 
 		  <script>
 		  	const nameInput = document.querySelector("#name"),
-		  		dateInput = document.querySelector("#date"),
 		  		copyBtn = document.querySelector('#copy'),
 		  		Url = document.querySelector('#url')
 
 		  	let x = 0, name = '', date = ''
 
+		  	Url.innerHTML = "https://yahyaanwar.github.io/hbd/";
 
 		  	nameInput.addEventListener('keyup', () => {
 		  		clearTimeout(x)
 		  		x = setTimeout(() => {
 		  			name = nameInput.value
-		  			updateURL();
-		  		}, 1000)
-		  	}, false)
-
-		  	dateInput.addEventListener('keyup', () => {
-		  		clearTimeout(x)
-		  		x = setTimeout(() => {
-		  			date = dateInput.value
 		  			updateURL();
 		  		}, 1000)
 		  	}, false)
@@ -83,6 +75,17 @@
 				clip.on("error", function() {
 				  console.log("huuuu")
 				});
+
+
+			  document.addEventListener('DOMContentLoaded', function() {
+			    var elems = document.querySelectorAll('.datepicker');
+			    var instances = M.Datepicker.init(elems, {
+			    	onClose: () => {
+			    		date = elems[0].value
+		  				updateURL();
+			    	}
+			    });
+			  });
 
 		  </script>
 
