@@ -79,7 +79,7 @@
 
 		  	let x = 0, name = '', date = '', born = ''
 
-		  	Url.innerHTML = "https://yahyaanwar.github.io/hbd/";
+		  	Url.innerHTML = "https://yahyaanwar.github.io/hbd/?yearly=true";
 
 		  	nameInput.addEventListener('keyup', () => {
 		  		clearTimeout(x)
@@ -100,7 +100,7 @@
 		  	yearlyCheck.addEventListener('click', () => {updateURL()}, false)
 
 		  	function updateURL(){
-	  			const link = `https://yahyaanwar.github.io/hbd/?name=${name}&date=${date}&born=${born}&yearly=` + yearlyCheck.checked
+	  			const link = `https://yahyaanwar.github.io/hbd/?name=${name}&date=${date}&born=${born}` + (yearlyCheck.checked && "&yearly=true")
 	  			document.querySelector('iframe').src = link;
 	  			Url.innerHTML = link;
 	  			copyBtn.innerHTML = "salin alamat"
