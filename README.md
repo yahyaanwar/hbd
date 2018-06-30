@@ -1,7 +1,11 @@
 # hbd
-untuk kamu yang lagi ultah
+untuk temen kamu yang lagi ultah
+
+untuk buat kartu baru kunjungi `https://yahyaanwar.github.io/hbd/create`
 
 ---
+
+## manual
 
 cara pakai: `https://yahyaanwar.github.io/hbd/?params`
 
