@@ -27,7 +27,7 @@ names.forEach(char => {
     let x = char.replace(/./g, function(x) {
         return "<span>" + x + "</span>"
     });
-    nameDOM.innerHTML += x
+    nameDOM.innerHTML += '<div class="row">'+x+'</div>'
 });
 
 if ($_GET.born && $_GET.date) {
